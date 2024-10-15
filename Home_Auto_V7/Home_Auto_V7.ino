@@ -1,11 +1,11 @@
-//Lys van komponente:
+list of components
 //1. Arduino Uno R4 WiFi
 //2. A4988 Stepper Motor Driver
 //3, NEMA 17 Stepper Motor
-//4. 3x Drukknoppies
+//4. 3x pushbuttons
 //5. Temp Sensor
 //6. SSD1306 OLED Display
-//7. Gonser
+//7. buzzer
 //8. 2x RGB LEDS
 //9. 80g Servo
 //10. Relay
@@ -33,7 +33,7 @@
 #define B1 6
 #define Step 8                  //Step Pin
 #define Dir 7                   //Dir Pin 
-#define Alarm 9                 //Gonser
+#define Alarm 9                 //Buzzer
 #define garage 10               //Servo
 #define IR 1                    //Gate Motor Inner Sensor
 #define IR1 3                   //Alarm Sensor
@@ -53,14 +53,14 @@ bool systemArmed = false;
 
 const int Pressed = HIGH; 
 
-Servo Garage;          //Koppel Servo Na 10
+Servo Garage;          //connect Servo to 10
 
 int pos = 0; 
 
 
 
-const char* ssid = "ZWARRIES STUDENT";                      //WiFi SSID (Netwerk Naam)  
-const char* password = "Zwarries2023";           //WiFi Password    
+const char* ssid = "Your network name";                      //WiFi SSID 
+const char* password = "Your wifi password";           //WiFi Password    
 
 WiFiServer server(80); // Create server on port 80
 
@@ -83,7 +83,7 @@ void setup() {
 
 
   
-  pinMode(Garage_BT1, INPUT_PULLUP);            // Lyn 90-110 is Self Explanitory
+  pinMode(Garage_BT1, INPUT_PULLUP);            // Line 90-110 is Self Explanitory
   pinMode(Garage_BT2, INPUT_PULLUP);
   Garage.attach(garage);
 
@@ -109,7 +109,7 @@ void setup() {
 
   
   // Connect to Wi-Fi
-  WiFi.begin(ssid, password);                  //Connect Na WiFi
+  WiFi.begin(ssid, password);                  //Connect to WiFi
   Serial.print("Connecting to ");
   Serial.print(ssid);
   while (WiFi.status() != WL_CONNECTED) {
